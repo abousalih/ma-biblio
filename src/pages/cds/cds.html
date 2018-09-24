@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-buttons float-start icon-only>
+      <button ion-button clear (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Les Cds</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button
+      ion-item
+      icon-start
+      *ngFor="let cd of cdList, let i=index"
+      (click)="onLoadCd(i)">
+      <ion-icon name="bookmark" [color]="cd.isLend ? 'danger' : 'secondary'"></ion-icon>
+      {{cd.titre}}</button>
+  </ion-list>
+</ion-content>

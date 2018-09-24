@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="onDismissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>{{cd.titre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card [ngClass]="cd.isLend ? 'is-lent' : 'is-not-lent'">
+    <ion-card-header>{{cd.titre}}</ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let line of cd.description">{{line}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid no-padding>
+    <ion-row>
+
+      <ion-col>
+        <button
+          ion-button
+          full
+          color="secondary"
+          [disabled]="cd.isLend"
+          (click)="onToggleLendCd()">Prêter
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button
+          ion-button
+          full
+          color="danger"
+          [disabled]="!cd.isLend"
+          (click)="onToggleLendCd()">Rendre
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
